@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import styled from "styled-components";
 import Input from "./Input";
 import LoginButton from "./LoginButton";
+import {useNavigate} from "react-router-dom";
 
 const Form = styled.form`
   width: 100%;
@@ -14,6 +15,7 @@ display: flex;
 `
 
 const LoginForm = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const formik = useFormik({
         initialValues: {
@@ -22,6 +24,7 @@ const LoginForm = () => {
         },
         onSubmit: values => {
             dispatch(login({...values, imageUrl: "http://www.rosglasrecovery.com/wp-content/uploads/2018/03/male.jpg"}))
+            navigate("/chat");
         },
     });
 

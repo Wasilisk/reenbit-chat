@@ -4,6 +4,7 @@ import {login} from "../store/slices/authSlice";
 import GoogleLogin from "react-google-login";
 import {ImGoogle} from "react-icons/im";
 import styled from "styled-components";
+import {useNavigate} from "react-router-dom";
 
 const GoogleButton = styled.button`
   width: 90%;
@@ -29,12 +30,14 @@ const GoogleButton = styled.button`
 `
 
 const GoogleLoginButton = () => {
+    const navigate = useNavigate();
     const dispatch = useDispatch();
 
     const handleLogin = async (googleData) => {
         const {name: userName, email, imageUrl} = googleData.profileObj;
 
         dispatch(login({userName, email, imageUrl}))
+        navigate("/chat");
     };
 
 
