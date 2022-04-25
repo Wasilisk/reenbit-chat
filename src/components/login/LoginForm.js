@@ -1,11 +1,15 @@
+/* node-modules */
 import { useFormik } from 'formik';
-import React from 'react';
-import {login} from "../store/slices/authSlice";
+import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import styled from "styled-components";
-import Input from "./Input";
+
+/* store */
+import {login} from "../../store/slices/authSlice";
+
+/* components */
+import FormInput from "./FormInput";
 import LoginButton from "./LoginButton";
-import {useNavigate} from "react-router-dom";
 
 const Form = styled.form`
   width: 100%;
@@ -23,21 +27,21 @@ const LoginForm = () => {
             email: '',
         },
         onSubmit: values => {
-            dispatch(login({...values, imageUrl: "http://www.rosglasrecovery.com/wp-content/uploads/2018/03/male.jpg"}))
+            dispatch(login(values))
             navigate("/chat");
         },
     });
 
     return (
         <Form onSubmit={formik.handleSubmit}>
-            <Input
+            <FormInput
                 name="userName"
                 type="text"
                 placeholder="Enter username"
                 onChange={formik.handleChange}
                 value={formik.values.userName}
             />
-            <Input
+            <FormInput
                 name="email"
                 type="email"
                 placeholder="Enter email"

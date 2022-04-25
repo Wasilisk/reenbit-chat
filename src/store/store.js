@@ -1,5 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authReducer from "./slices/authSlice"
+import chatsReducer from "./slices/chatsSlices"
 
 const saveToLocalStorage = (state) => {
     try {
@@ -25,7 +26,8 @@ const persistedStore = {
 
 const store = configureStore({
     reducer: {
-        auth: authReducer
+        auth: authReducer,
+        chats: chatsReducer
     },
     preloadedState: persistedStore
 })

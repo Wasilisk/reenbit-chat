@@ -1,10 +1,12 @@
-import React from 'react';
-import {useDispatch} from "react-redux";
-import {login} from "../store/slices/authSlice";
+/* node-modules */
+import {useNavigate} from "react-router-dom";
 import GoogleLogin from "react-google-login";
 import {ImGoogle} from "react-icons/im";
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
+import {useDispatch} from "react-redux";
+
+/* store */
+import {login} from "../../store/slices/authSlice";
 
 const GoogleButton = styled.button`
   width: 90%;
@@ -25,7 +27,7 @@ const GoogleButton = styled.button`
   }
 
   &:hover {
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 1px 3px 1px;
   }
 `
 

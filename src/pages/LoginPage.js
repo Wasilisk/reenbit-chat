@@ -1,13 +1,15 @@
-import React from 'react';
-import LoginForm from "../components/LoginForm";
-import GoogleLogin from "../components/GoogleLoginButton";
-import DividerWithText from "../components/DividerWithText";
+/* node-modules */
 import styled from "styled-components";
 import {FaUserAlt} from  "react-icons/fa";
 
+/* components */
+import LoginForm from "../components/login/LoginForm";
+import GoogleLogin from "../components/login/GoogleLoginButton";
+import DividerWithText from "../components/common/DividerWithText";
+
 const LoginContainer = styled.div`
   margin: 0 auto;
-  width: 320px;
+  width: 310px;
   height: 300px;
   background-color: white;
   border-radius: 20px;
@@ -16,7 +18,7 @@ const LoginContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
 `
 const LoginHeader = styled.div`
   width: 100%;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-const Input = styled.input`
-    width: 80%;
+const FormInput = styled.input`
+  width: 80%;
   height: 30px;
   border-radius: 20px;
   font-family: 'Rubik', sans-serif;
@@ -18,4 +18,4 @@ const Input = styled.input`
   }
 `
 
-export default Input;
+export default FormInput;
