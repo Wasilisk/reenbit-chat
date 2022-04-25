@@ -7,12 +7,16 @@ const FormInput = styled.input`
   font-family: 'Rubik', sans-serif;
   padding-left: 20px;
   padding-right: 20px;
-  border: 2px solid #dbddec;
+  border: ${({error}) => error ? "2px solid #bb0909" : "2px solid #dbddec"};
   outline: none;
   margin-bottom: 10px;
+
   &::placeholder {
     text-align: center;
+    color: ${({error}) => error ? "#bb0909" : "black"};
+
   }
+
   &:focus {
     outline: none;
   }

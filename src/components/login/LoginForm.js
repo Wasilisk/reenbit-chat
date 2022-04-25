@@ -1,8 +1,9 @@
 /* node-modules */
-import { useFormik } from 'formik';
+import {useFormik} from 'formik';
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
 import styled from "styled-components";
+import * as Yup from 'yup';
 
 /* store */
 import {login} from "../../store/slices/authSlice";
@@ -13,10 +14,17 @@ import LoginButton from "./LoginButton";
 
 const Form = styled.form`
   width: 100%;
-display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
 `
+
+const LoginSchema = Yup.object().shape({
+    userName: Yup.string()
+        .min(6, 'Too short username!')
+        .required('Username is required'),
+    email: Yup.string().email('Invalid email').required('Email is required'),
+});
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -26,6 +34,7 @@ const LoginForm = () => {
             userName: '',
             email: '',
         },
+        validationSchema: LoginSchema,
         onSubmit: values => {
             dispatch(login(values))
             navigate("/chat");
@@ -37,14 +46,24 @@ const LoginForm = () => {
             <FormInput
                 name="userName"
                 type="text"
-                placeholder="Enter username"
+                placeholder={
+                    formik.errors.userName ?
+                        formik.errors.userName
+                        : "Enter username"
+                }
+                error={formik.errors.userName}
                 onChange={formik.handleChange}
                 value={formik.values.userName}
             />
             <FormInput
                 name="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder={
+                    formik.errors.email ?
+                        formik.errors.email
+                        : "Enter email"
+                }
+                error={formik.errors.email}
                 onChange={formik.handleChange}
                 value={formik.values.email}
             />

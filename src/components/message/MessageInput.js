@@ -67,7 +67,7 @@ const MessageInput = ({contactId}) => {
     return (
         <MessageInputContainer>
             <form onSubmit={handleSubmit}>
-                <InputField value={value} onChange={onHandleChange} placeholder="Type your message"/>
+                <InputField value={value} onChange={onHandleChange} placeholder="Type your message" required/>
                 <button type="submit">
                     <MdOutlineSend/>
                 </button>
